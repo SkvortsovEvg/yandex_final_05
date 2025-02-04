@@ -33,8 +33,8 @@ public class Epic extends Task{
                 +"id="+getId()
                 +", name=\""+getName()
                 +"\", description=\""+getDescription()
-                +"\", subtaskList="+subtaskList.size()
-                +", status="+getStatus()
+                +"\",\nsubtaskList="+ subtaskList
+                +",\nstatus="+getStatus()
                 +"}";
     }
 }
