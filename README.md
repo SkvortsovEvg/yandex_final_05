@@ -131,13 +131,15 @@ private static void printAllTasks(TaskManager manager) {
 
 3. В меню выбора теста (**Testing library**) выберите **JUnit5**, а затем нажмите кнопку **Fix** (англ. «Исправить»).
 
-https://github.com/SkvortsovEvg/java-kanban/blob/main/image/readme/pic_003.png
+![001](https://github.com/SkvortsovEvg/java-kanban/blob/main/image/readme/pic_003.png "Текст 001")
 
 4. Скачайте библиотеку в папку **lib**. Поставьте галочку около пункта **Download to** (англ. «Скачать в...») и нажмите кнопку **OK**, чтобы подтвердить создание теста.
 
-https://github.com/SkvortsovEvg/java-kanban/blob/main/image/readme/pic_004.png
+![002](https://github.com/SkvortsovEvg/java-kanban/blob/main/image/readme/pic_004.png "Текст 001")
 
 5. После этого откроется файл **EpicTest**. Можно переходить к написанию тестов. Проверьте, что все библиотеки загрузились в папку **lib**.
+
+![003](https://github.com/SkvortsovEvg/java-kanban/blob/main/image/readme/pic_005.png "Текст 001")
 
 Не нужно покрывать тестами весь код. Даже для такого небольшого проекта тестирование может занять значительное время. Но всё же обратите внимание на некоторые нюансы, которые необходимо проверить:
 
