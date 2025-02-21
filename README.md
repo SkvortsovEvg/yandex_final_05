@@ -21,7 +21,7 @@
 
 Для того чтобы избежать рутины, воспользуйтесь встроенными функциями IDEA. Извлечь из имеющегося класса интерфейс с нужными методами поможет функция в главном меню Refactor → Extract/Introduce → Interface. Нужные для интерфейса методы отметьте чекбоксами.
 
-![Интерфейс](https://github.com/SkvortsovEvg/yandex_final_04/blob/master/image/readme/pic_001.png "Текст 001")
+![Интерфейс](https://github.com/SkvortsovEvg/java-kanban/blob/main/image/readme/pic_001.png "Текст 001")
 
 ## История просмотров задач
 
@@ -127,9 +127,15 @@ private static void printAllTasks(TaskManager manager) {
 
 2. Нажмите Ctrl+Shift+T. В выпадающем меню выберите пункт **Create New Test** (англ. «Создать новый тест»). В появившемся окне нажмите кнопку **OK** — тест будет размещён в папке `test`, если каталог `test` отмечен как Test Sources.
 
+![Интерфейс](https://github.com/SkvortsovEvg/java-kanban/blob/main/image/readme/pic_002.png "Текст 001")
+
 3. В меню выбора теста (**Testing library**) выберите **JUnit5**, а затем нажмите кнопку **Fix** (англ. «Исправить»).
 
+https://github.com/SkvortsovEvg/java-kanban/blob/main/image/readme/pic_003.png
+
 4. Скачайте библиотеку в папку **lib**. Поставьте галочку около пункта **Download to** (англ. «Скачать в...») и нажмите кнопку **OK**, чтобы подтвердить создание теста.
+
+https://github.com/SkvortsovEvg/java-kanban/blob/main/image/readme/pic_004.png
 
 5. После этого откроется файл **EpicTest**. Можно переходить к написанию тестов. Проверьте, что все библиотеки загрузились в папку **lib**.
 
