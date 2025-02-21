@@ -21,7 +21,7 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public int getNextID() {
-       return nextID++;
+        return nextID++;
     }
 
     @Override
