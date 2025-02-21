@@ -1,7 +1,11 @@
+package task;
+
+import enums.Status;
+
 import java.util.Objects;
 
 public class Task {
-    private int id;
+    private int id = 1;
     private String name;
     private String description;
     private Status status;
@@ -31,16 +35,8 @@ public class Task {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Status getStatus() {
@@ -56,10 +52,7 @@ public class Task {
         if (this == obj) return true;
         if (obj == null || this.getClass() != obj.getClass()) return false;
         Task otherTask = (Task) obj;
-        return Objects.equals(name, otherTask.name)
-                && Objects.equals(description, otherTask.description)
-                && (status == otherTask.status)
-                && id == otherTask.id;
+        return id == otherTask.id;
     }
 
     @Override
@@ -77,6 +70,10 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task{id=" + id + ", name=\"" + name + "\", description=\"" + description + "\", status=" + status + "}";
+        return "Task{id=" + id
+                + ", name=\"" + name
+                + "\", description=\"" + description
+                + "\", status=" + status
+                + "}";
     }
 }

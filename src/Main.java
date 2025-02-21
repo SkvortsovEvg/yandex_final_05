@@ -1,50 +1,90 @@
-import java.util.ArrayList;
+import enums.Status;
+import manager.Managers;
+import manager.TaskManager.InMemoryTaskManager;
+import manager.TaskManager.TaskManager;
+import task.Epic;
+import task.Subtask;
+import task.Task;
 
 public class Main {
+
+    private static final InMemoryTaskManager inMemoryTaskManager = Managers.getDefault();
+
     public static void main(String[] args) {
-        TaskManager taskManager = new TaskManager();
+        addTasks();
+        printAllTasks();
+        printViewHistory();
+    }
+
+    private static void addTasks() {
 
         Task cleanFloor = new Task("Пропылесосить полы", "Попробовать робота-пылесоса");
-        Task createdCleanFloor = taskManager.addTask(cleanFloor);
-        System.out.println(createdCleanFloor);
+        inMemoryTaskManager.addTask(cleanFloor);
 
         Task washFloor = new Task(cleanFloor.getId(),
-                            "Помыть полы",
-                        "Используем СУПЕР-средство",
-                                  Status.IN_PROGRESS);
-        Task updatedWashFloor = taskManager.updateTask(washFloor);
-        System.out.println(updatedWashFloor);
+                "Помыть полы",
+                "Используем СУПЕР-средство",
+                Status.IN_PROGRESS);
+        inMemoryTaskManager.updateTask(washFloor);
+
+        inMemoryTaskManager.addTask(new Task("Купить фрукты", "Яблоки - 1 кг, Груши - 1 кг"));
 
         Epic roomRenovation = new Epic("Сделать ремонт в комнате", "Управиться за 10 дней");
-        taskManager.addEpic(roomRenovation);
-        System.out.println(roomRenovation);
+        inMemoryTaskManager.addEpic(roomRenovation);
 
         Subtask roomRenovationSubtask1 =
                 new Subtask("Покрасить стены",
                         "Что-то светлое или немного желтое",
-                                  roomRenovation.getId());
+                        roomRenovation.getId());
         Subtask roomRenovationSubtask2 =
                 new Subtask("Собрать комод",
                         "Лучше слева от входа",
-                                  roomRenovation.getId());
+                        roomRenovation.getId());
 
-        taskManager.addSubtask(roomRenovationSubtask1);
-        taskManager.addSubtask(roomRenovationSubtask2);
-
-        System.out.println(roomRenovation);
+        inMemoryTaskManager.addSubtask(roomRenovationSubtask1);
+        inMemoryTaskManager.addSubtask(roomRenovationSubtask2);
 
         roomRenovationSubtask1.setStatus(Status.DONE);
-        taskManager.updateSubtask(roomRenovationSubtask1);
-        System.out.println(roomRenovation);
+        inMemoryTaskManager.updateSubtask(roomRenovationSubtask1);
+    }
 
-        roomRenovationSubtask2.setStatus(Status.DONE);
-        taskManager.updateSubtask(roomRenovationSubtask2);
-        System.out.println(roomRenovation);
+    private static void printAllTasks() {
+        System.out.println("Задачи:");
+        for (Task task : inMemoryTaskManager.getTasks()) {
+            System.out.println(task);
+        }
 
-        ArrayList<Subtask> arrayRoomRenovation = roomRenovation.getSubtaskList();
+        System.out.println("\nЭпики:");
+        for (Epic epic : inMemoryTaskManager.getEpics()) {
+            System.out.println(epic);
 
-        for (Subtask subtask : arrayRoomRenovation) {
+            for (Task task : inMemoryTaskManager.getEpicSubtasks(epic)) {
+                System.out.println("=====> " + task);
+            }
+        }
+
+        System.out.println("\nПодзадачи:");
+        for (Subtask subtask : inMemoryTaskManager.getSubtasks()) {
             System.out.println(subtask);
+        }
+    }
+
+    private static void printViewHistory() {
+        inMemoryTaskManager.getTaskById(1);
+        inMemoryTaskManager.getTaskById(2);
+        inMemoryTaskManager.getEpicById(3);
+        inMemoryTaskManager.getEpicById(3);
+        inMemoryTaskManager.getSubtaskById(4);
+        inMemoryTaskManager.getSubtaskById(5);
+        inMemoryTaskManager.getSubtaskById(4);
+        inMemoryTaskManager.getTaskById(1);
+        inMemoryTaskManager.getTaskById(2);
+        inMemoryTaskManager.getEpicById(3);
+        inMemoryTaskManager.getSubtaskById(4);
+
+        System.out.println("\n\n\nВыводим историю просмотров:");
+        for (Task task : inMemoryTaskManager.getHistory()) {
+            System.out.println(task+"\n===============");
         }
     }
 }
