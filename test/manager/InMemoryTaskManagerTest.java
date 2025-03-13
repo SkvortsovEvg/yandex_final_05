@@ -175,6 +175,7 @@ public class InMemoryTaskManagerTest {
                 Status.IN_PROGRESS));
         taskManager.deleteEpicById(1);
         assertNull(taskManager.deleteTaskById(1));
+        int i = 0;
     }
 
     @Test
@@ -193,7 +194,7 @@ public class InMemoryTaskManagerTest {
     }
 
     @Test
-    public void TaskCreatedAndTaskAddedShouldHaveSameVariables(){
+    public void taskCreatedAndTaskAddedShouldHaveSameVariables(){
         Task task = new Task(1, "Скоро будут чистые полы", "Не знаю что писать", Status.DONE);
         taskManager.addTask(task);
         List<Task> list = taskManager.getTasks();
@@ -203,4 +204,5 @@ public class InMemoryTaskManagerTest {
         assertEquals(actual.getDescription(), task.getDescription());
         assertEquals(actual.getStatus(), task.getStatus());
     }
+
 }
